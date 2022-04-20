@@ -13,14 +13,13 @@
 
     - name: Install "SDKMAN!"
       shell: |
-        curl -s "https://get.sdkman.io" | bash
-        source "/root/.sdkman/bin/sdkman-init.sh"
+        curl -s "https://get.sdkman.io" | bash executable=/bin/bash
 
     - name: Install "gradle"
-      shell: sdk install gradle
+      shell: "source /root/.sdkman/bin/sdkman-init.sh && sdk install gradle"
 
     - name: Clone a github repository
       git:
         repo: https://github.com/Mod4rchive/refactored-train
-        dest: /root
+        dest: /root/refactored-train
         clone: yes
