@@ -17,6 +17,8 @@
 
     - name: Install "gradle"
       shell: "source /root/.sdkman/bin/sdkman-init.sh && sdk install gradle"
+      args:
+        executable: /bin/bash
 
     - name: Clone a github repository
       git:
