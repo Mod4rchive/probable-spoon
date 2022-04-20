@@ -1,0 +1,10 @@
+---
+- name: Simple web-app server
+  hosts: all
+  become: yes
+  become_user: root
+  tasks:
+    - name: Deploy app
+      shell: gradle bootRun
+      args:
+        chdir: refactored-train/

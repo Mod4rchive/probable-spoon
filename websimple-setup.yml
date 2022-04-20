@@ -1,0 +1,31 @@
+---
+- name: Simple web-app server
+  hosts: all
+  become: yes
+  become_user: root
+  tasks:
+    - name: Install "git", "zip", "openjdk-11-jdk"
+      apt:
+        pkg:
+            - git
+            - zip
+            - openjdk-11-jdk
+
+    - name: Install "SDKMAN!"
+      shell: |
+        curl -s "https://get.sdkman.io" | bash
+        source "/root/.sdkman/bin/sdkman-init.sh"
+
+    - name: Install "gradle"
+      shell: sdk install gradle
+
+    - name: Clone a github repository
+      git:
+        repo: https://github.com/Mod4rchive/refactored-train
+        dest: /root
+        clone: yes
+
+    - name: Deploy app
+      shell: gradle bootRun
+      args:
+        chdir: refactored-train/
