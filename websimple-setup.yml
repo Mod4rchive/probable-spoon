@@ -25,3 +25,4 @@
         repo: https://github.com/Mod4rchive/refactored-train
         dest: /root/refactored-train
         clone: yes
+        force: yes
