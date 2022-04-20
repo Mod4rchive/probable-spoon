@@ -1,10 +1,10 @@
 ---
 - name: Simple web-app server
   hosts: all
-  become: yes
-  become_user: root
+  vars:
+   ansible_host_key_checking: false
   tasks:
     - name: Deploy app
-      shell: gradle bootRun
+      shell: chmod +x ./gradlew|./gradlew bootRun
       args:
-        chdir: refactored-train/
+        chdir: /root/refactored-train/

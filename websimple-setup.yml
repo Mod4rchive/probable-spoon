@@ -1,8 +1,8 @@
 ---
 - name: Simple web-app server
   hosts: all
-  become: yes
-  become_user: root
+  vars:
+   ansible_host_key_checking: false
   tasks:
     - name: Install "git", "zip", "openjdk-11-jdk"
       apt:
@@ -24,8 +24,3 @@
         repo: https://github.com/Mod4rchive/refactored-train
         dest: /root
         clone: yes
-
-    - name: Deploy app
-      shell: gradle bootRun
-      args:
-        chdir: refactored-train/
